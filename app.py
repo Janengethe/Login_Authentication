@@ -34,7 +34,7 @@ class RegisterForm(FlaskForm):
     submit = SubmitField("Register")
 
 def validate_username(self, username):
-    existing_user_username = User.query.filter_by(username.username.data).first()
+    existing_user_username = User.query.filter_by(username.username.data).all()
     if existing_user_username:
         raise ValidationError("Username already exist")
 
@@ -85,7 +85,7 @@ def register():
         new_user = User(username=form.username.data, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
-        return redirect(url_for('login'))
+        return redirect(url_for('dashboard'))
 
     return render_template('register.html', form=form)
 

@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block head %}<title>Login</title>{% endblock head %}
+
+
+{% block body %}
     <h4>Login Page</h4>
 
     <form method="POST" action="">
@@ -15,6 +12,5 @@
         {{ form.password }}
         {{ form.submit }}
     </form>
-    <a href="{{ url_for('register') }}">Don't have an account? sign up</a>
-</body>
-</html>
+    <p>Don't have an account? <a href="{{ url_for('register') }}">Sign up</a></p>
+{% endblock body %}
